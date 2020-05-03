@@ -9,10 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - LeaveManagement</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
     <link href="~/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" />
-    @*<link href="~/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />*@
-    @*<link href="~/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />*@
-    <link href="~/fontawesome-free-5.13.0-web/css/fontawesome.css" rel="stylesheet" />
     <link href="~/lib/jqueryui/jquery-ui.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -34,6 +32,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="LeaveRequest" asp-action="Create">Apply for Leave</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="LeaveRequest" asp-action="MyLeave">My Leave</a>
+                        </li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             if (User.IsInRole("Administrator"))
@@ -44,8 +45,8 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" asp-controller="LeaveTypes" asp-action="Index">Leave Type</a>
-                                        <a class="dropdown-item"  asp-controller="LeaveAllocation" asp-action="Index">Leave Allocations</a>
-                                        <a class="dropdown-item" asp-controller="LeaveRequest" asp-action="Index">Leave Applications</a>
+                                        <a class="dropdown-item" asp-controller="LeaveAllocation" asp-action="Index">Leave Allocations</a>
+                                        <a class="dropdown-item" asp-controller="LeaveRequest" asp-action="Index">Leave Requests</a>
                                         <a class="dropdown-item" asp-controller="LeaveAllocation" asp-action="ListEmployees">Employees</a>
                                     </div>
                                 </li>
@@ -71,7 +72,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jqueryui/jquery-ui.js"></script>
     @RenderSection("Scripts", required: false)
 </body>

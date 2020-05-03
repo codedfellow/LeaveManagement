@@ -13,7 +13,8 @@
         <form asp-action="Create">
             <div class="form-group">
                 <label asp-for="LeaveTypeId" class="control-label"></label>
-                @Html.DropDownListFor(q => q.LeaveTypeId, new SelectList(Model.LeaveTypes, "Value", "Text"), "Select Leave Type", new { @class = "form-control" })
+                @Html.DropDownListFor(q => q.LeaveTypeId, new SelectList(Model.LeaveTypes, "Value", "Text"), "Select Leave Type",
+               new { @class = "form-control" })
                 <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
             </div>
             <div class="row">
@@ -29,6 +30,13 @@
                         <label asp-for="EndDate" class="control-label"></label>
                         <input asp-for="EndDate" class="form-control datepicker" />
                         <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <textarea asp-for="RequestComments" class=""></textarea>
+                        <span asp-validation-for="RequestComments"></span>
                     </div>
                 </div>
             </div>

@@ -30,9 +30,9 @@ namespace LeaveManagement.Repository
 
         public ICollection<LeaveRequest> FindAll()
         {
-            var leaveHistories = _db.LeaveRequests.Include(q => q.RequestingEmployee).Include(q => q.ApprovedBy)
+            var leaveRequests = _db.LeaveRequests.Include(q => q.RequestingEmployee).Include(q => q.ApprovedBy)
                 .Include(q => q.LeaveType).ToList();
-            return leaveHistories;
+            return leaveRequests;
         }
 
         public LeaveRequest FindById(int id)
@@ -40,6 +40,14 @@ namespace LeaveManagement.Repository
             var leaveHistory = _db.LeaveRequests.Include(q => q.RequestingEmployee).Include(q => q.ApprovedBy)
                 .Include(q => q.LeaveType).FirstOrDefault(q => q.Id == id);
             return leaveHistory;
+        }
+
+        public ICollection<LeaveRequest> GetLeaveRequestsByEmployee(string employeeid)
+        {
+            var leaveRequests = _db.LeaveRequests.Include(q => q.RequestingEmployee).Include(q => q.ApprovedBy)
+                 .Include(q => q.LeaveType).Where(q => q.RequestingEmployeeId == employeeid).ToList();
+            //var leaveRequests = FindAll().Where(q => q.RequestingEmployeeId == employeeid).ToList();
+            return leaveRequests;
         }
 
         public bool IsExist(int id)
